@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const postRoutes = require("./routes/postRoutes");
 const {DBConnection} = require("./database/db");
+const {limiter} = require('./Ip_Rate_limiter/ip_rate')
 
 // mongoose.connect('mongodb://localhost:27017')
 // .then(()=> console.log("Connection Done"))
@@ -16,6 +17,7 @@ DBConnection();
 
 // Middleware
 app.use(express.json());
+app.use(limiter);
 
 // Routes
 app.use("/", postRoutes);

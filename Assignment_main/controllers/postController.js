@@ -1,10 +1,17 @@
 const Post = require("../models/Post");
 const analysisService = require("../services/analysisService");
+const Redis = require("ioredis");
+
+const redis = new Redis(); // You can pass connection options if needed
 
 exports.createPost = async (req, res) => {
   try {
     const { content, id } = req.body;
     const post = await Post.create({ content, id });
+
+    // Clear cache for this post ID after creating a new post
+    await redis.del(`analysis:${id}`);
+
     res.status(201).json(post);
   } catch (error) {
     console.error(error);
@@ -15,6 +22,13 @@ exports.createPost = async (req, res) => {
 exports.getAnalysis = async (req, res) => {
   try {
     const { id } = req.params;
+
+    // Check if analysis result is cached
+    const cachedAnalysis = await redis.get(`analysis:${id}`);
+    if (cachedAnalysis) {
+      return res.status(200).json(JSON.parse(cachedAnalysis));
+    }
+
     const post = await Post.findOne({ id: id });
 
     if (!post) {
@@ -22,6 +36,10 @@ exports.getAnalysis = async (req, res) => {
     }
 
     const analysis = analysisService.analyzePost(post);
+
+    // Cache the analysis result with a key based on the post ID
+    await redis.set(`analysis:${id}`, JSON.stringify(analysis));
+
     res.status(200).json(analysis);
   } catch (error) {
     console.error(error);
