@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const postRoutes = require("./routes/postRoutes");
 const {DBConnection} = require("./database/db");
-const {limiter} = require('./Ip_Rate_limiter/ip_rate')
+const {limiter} = require('./ip_rate_limiter/ip_rate')
 
 // mongoose.connect('mongodb://localhost:27017')
 // .then(()=> console.log("Connection Done"))
