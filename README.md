@@ -21,7 +21,6 @@ Ensure you have Node.js and npm installed on your system.
 
 1. Clone the GitHub repository.
 2. Open your preferred code editor (preferably VS Code).
-3. In the terminal, navigate to the project folder using `cd Assignment_main`.
 4. Create a `.env` file and add the necessary details (refer to `.envSample`).
 5. Install dependencies: `npm install`.
 
