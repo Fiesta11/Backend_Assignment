@@ -2,7 +2,15 @@ const Post = require("../models/Post");
 const analysisService = require("../services/analysisService");
 const Redis = require("ioredis");
 
-const redis = new Redis(); // You can pass connection options if needed
+// Replace these with your actual Redis Cloud credentials
+const redisOptions = {
+  host: 'redis-12091.c325.us-east-1-4.ec2.cloud.redislabs.com',
+  port: 12091,
+  password: '32os0b3bvDZs1LY7CVQuDL0TuvbadJ3h',
+  // other options...
+};
+
+const redis = new Redis(redisOptions);
 
 exports.createPost = async (req, res) => {
   try {
