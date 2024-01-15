@@ -5,6 +5,9 @@
 For a detailed walkthrough and demonstration of the Social Media Analytics Microservice, please watch the following video: <br>
 [Social Media Analytics Microservice Demo](https://www.loom.com/share/b9b1ee393adc480c8ea3ea08ee89c3de?sid=d38e7132-aafc-4919-8405-149cf7ef8c68).
 
+### Deployed Link
+[Deployed Link ](https://socialmedia-analytics-lquw.onrender.com)
+
 ## Introduction
 
 Welcome to the Social Media Analytics Microservice! The Social Media Analytics Platform Backend is a robust application engineered to manage social media posts, deliver insightful analytics, and ensure scalability. This project is developed using JavaScript, specifically NodeJS and ExpressJS. Additionally, it leverages Redis for both database operations and efficient caching, contributing to a powerful and scalable foundation.
