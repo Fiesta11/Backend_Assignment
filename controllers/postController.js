@@ -7,7 +7,6 @@ const redisOptions = {
   host: 'redis-12091.c325.us-east-1-4.ec2.cloud.redislabs.com',
   port: 12091,
   password: '32os0b3bvDZs1LY7CVQuDL0TuvbadJ3h',
-  // other options...
 };
 
 const redis = new Redis(redisOptions);

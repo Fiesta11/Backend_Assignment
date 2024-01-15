@@ -3,8 +3,9 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const postRoutes = require("./routes/postRoutes");
 const {DBConnection} = require("./database/db");
-const {limiter} = require('./ip_rate_limiter/ip_rate')
-
+// const {limiter} = require('./ip_rate_limiter/ip_rate')
+const apps = express();
+apps.set('trust proxy', true);
 // mongoose.connect('mongodb://localhost:27017')
 // .then(()=> console.log("Connection Done"))
 // .catch(err => console.error("Could not connect to mongodb" , err))
@@ -17,7 +18,7 @@ DBConnection();
 
 // Middleware
 app.use(express.json());
-app.use(limiter);
+// app.use(limiter);
 
 // Routes
 app.use("/", postRoutes);
